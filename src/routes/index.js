@@ -4,8 +4,12 @@ module.exports.register = async server => {
   server.route({
     method: 'GET',
     path: '/',
-    handler: () => {
-      return 'My first hapi server!';
+    handler: async (request, h) => {
+      try {
+        return h.view('home');
+      } catch (err) {
+        server.log(['error', 'home'], err);
+      }
     },
   });
 };
