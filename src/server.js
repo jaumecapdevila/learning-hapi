@@ -1,6 +1,6 @@
 'use strict';
 
-const app = require('./app');
+const app = require('./config');
 
 const port = 8080;
 const config = { port };
