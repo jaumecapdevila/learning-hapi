@@ -1,8 +1,11 @@
 'use strict';
 
+require('dotenv').config();
+
 const app = require('./config');
 
-const port = 8080;
+const DEFAULT_PORT = 8080;
+const port = process.env.PORT || DEFAULT_PORT;
 const config = { port };
 
 const start = async () => {

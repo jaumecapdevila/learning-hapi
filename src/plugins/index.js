@@ -3,6 +3,7 @@
 const blipp = require('blipp');
 const pino = require('hapi-pino');
 const serverStart = require('./serverStart');
+const auth = require('./auth');
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -13,7 +14,7 @@ module.exports.register = async server => {
       plugin: pino,
       options: {
         prettyPrint: isDev,
-        logEvents: ['response', 'onPostStart'],
+        logEvents: ['response'],
       },
     },
     {
@@ -23,4 +24,5 @@ module.exports.register = async server => {
       },
     },
   ]);
+  await auth.register(server);
 };
